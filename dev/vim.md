@@ -117,6 +117,10 @@ or
 ## paste
 * `p`: paste at the current position the yanked line or lines from the buffer
 
+## switching case
+* `gU`: uppercase `"HellO"` to `"HELLO"`
+* `gu`: lowercase `"HellO"` to `"hello"`
+
 ## undo/redo
 * `u`: undo the previous operation
 * `CTRL-r`: redo changes which were undone (undo the undos)
