@@ -446,6 +446,10 @@ convert markdown to pdf
 ```bash
 $ pandoc --latex-engine=/usr/texbin/pdflatex input.md -o output.pdf
 ```
+convert markdown to latex
+```bash
+$ pandoc -s readme.md -o readme.tex
+```
 
 ## paste
 combine multiple files column-wise
