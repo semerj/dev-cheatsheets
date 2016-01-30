@@ -135,6 +135,10 @@ $ cat file | somecommand
 # or
 $ < file somecommand
 ```
+print column number of first row (transform columns into rows first)
+```bash
+$ head -n 1 file | tr "," "\n" | cat -n
+```
 
 ## convert
 convert `.jpg`'s into a `.gif`
