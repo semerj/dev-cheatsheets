@@ -83,16 +83,16 @@
 * `v` - select by characters
 * `V` - select by lines
 
-* **prepred multiple lines**
+* **preprend multiple lines**
     * `CTRL-v`, highlight lines, `Shift-I` to insert at beginning of block, press `Esc`
-
 * **visual select**
     * `>>`: indent the text right by shiftwidth
     * `<<`: indent the text left by shiftwidth
     * `y`: "yank" the text into the paste buffer
-
 * **visual insert**
     * `CTRL V` (select column), `Shift i` (type text to insert), `Esc`: insert text in multi-line selection
+* **paste output from stdout into vim**
+    * type valid shell/python/R command in vim, visually select all lines, and enter `:!python`, or `:!bash`, or `:!R --vanilla`
 
 ## new line
 * `o`: start a new line below
