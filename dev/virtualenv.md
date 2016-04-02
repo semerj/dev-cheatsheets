@@ -1,6 +1,6 @@
 # [Virtualenv](http://virtualenvwrapper.readthedocs.org/en/latest/command_ref.html#managing-environments)
 
-_note: anaconda python does not work with virtualenv/virutalenvwrapper. use `conda` instead._
+*note: anaconda python does not work with virtualenv/virutalenvwrapper. use `conda` instead.*
 
 ```bash
 $ type -a python
@@ -19,7 +19,7 @@ export PROJECT_HOME=$HOME/Envs                # project working directories loca
 export VIRTUALENVWRAPPER_PYTHON=              # full path of interpreter to use
 export VIRTUALENV_PYTHON=                     # overrides interpreter above
 export VIRTUALENVWRAPPER_VIRTUALENV=          # full path of virtualenv binary to use
-source /usr/local/bin/virtualenvwrapper.sh            
+source /usr/local/bin/virtualenvwrapper.sh
 ```
 
 or specify `VIRTUALENV_PYTHON` with python directory before `mkproject`/`mkvirtualenv`
@@ -36,7 +36,7 @@ Python 3.3.4
 ```
 
 ### mkvirtualenv/mkproject
-creates an environment inside _~/.virtualenvs_
+creates an environment inside `~/.virtualenvs`
 ```bash
 $ mkvirtualenv venv
 
@@ -44,7 +44,7 @@ $ mkvirtualenv venv
 $ mkvirtualenv --python=/usr/local/bin/python3 venv
 ```
 
-creates an environment inside _~/.virtualenvs_ and a project directory inside _~/Envs_
+creates an environment inside `~/.virtualenvs` and a project directory inside `~/Envs`
 ```bash
 $ mkproject py33
 ```
@@ -54,13 +54,13 @@ $ mkproject py33
 $ pip install "ipython[all]"
 ```
 
-### workon 
+### workon
 shows current environments
 ```bash
 $ workon
 py33
 venv
-``` 
+```
 
 ### deactivate
 switches out of current environment
@@ -74,6 +74,12 @@ removes project/environment
 $ rmvirtualenv py33
 ```
 
+### allvirtualenv
+update `pip` for all virtualenvs
+```bash
+$ allvirtualenv pip install -U pip
+```
+
 ### mktmpenv
 creates temporary environment in `WORKON_HOME` directory. deleted when deactivated.
 ```bash
@@ -81,7 +87,7 @@ mktmpenv
 ```
 
 ### requirements
-after installing modules, create _requirements.txt_
+after installing modules, create `requirements.txt`
 ```bash
 $ pip install Flask requests
 $ pip freeze > requirements.txt
@@ -92,4 +98,5 @@ requests==0.11.1
 # use requirements.txt modules for new virtualenv
 $ pip install -r requirements.txt
 ```
-_postmkvirtualenv_ is run when a new environment is created, letting you automatically install commonly-used tools.
+
+`postmkvirtualenv` is run when a new environment is created, letting you automatically install commonly-used tools.
