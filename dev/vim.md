@@ -163,6 +163,7 @@ or
     * `i`: open selected file in a horizontal split window
     * `s`: open selected file in a vertical split window
     * `t`: open selected file in a new tab
+    * `m`: delete file in menu
 
 * **full path fuzzy file, buffer finder with [ctrlp.vim](https://github.com/kien/ctrlp.vim)**
     * `,t` brings up a project file filter for easily opening specific files
