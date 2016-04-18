@@ -68,6 +68,7 @@
     * `:%s/$/foo/g`: add `foo` to the end of each line
     * `:5,12s/foo/bar/g`: replace `foo` with `bar` globally between lines 5 and 12
     * `:%s/\s*\w\+\s*$//`: delete last word of each line
+    * `/\v<[A-Z]+>` & `:%s//\r&/g`: find all capital words and create a newline after match
 
 * **silver searcher with [ag.vim](https://github.com/rking/ag.vim)**
     * `,a [options] {pattern} [{directory}]`: search code across files in directory
