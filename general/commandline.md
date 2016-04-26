@@ -620,6 +620,12 @@ $ tar jcvf mydir.tar.xz mydir
 $ tar xvf mydir.tar.gz
 ```
 
+## tee
+redirect stderr (2) into stdout (1), then pipe stdout into `tee`, which copies it to the terminal and to log file
+```bash
+./myscript.sh 2>&1 | tee log.txt
+```
+
 ## tr
 translate braces into parenthesis
 ```bash
