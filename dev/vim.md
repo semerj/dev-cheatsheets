@@ -131,6 +131,9 @@ or
 * `\\` toggles visual selection comment lines
 
 ## tabs
+* `:tabedit {file}`; edit specified file in a new tab
+* `:tabfind {file}`: open a new tab with filename given, searching the 'path' to find it
+* `:tabclose`: close current tab
 * `gt`: go to next tab
 * `gT`: go to previous tab
 * `CTRL-w SHIFT-t`: move pane to tab
