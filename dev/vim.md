@@ -133,6 +133,7 @@ or
 ## tabs
 * `gt`: go to next tab
 * `gT`: go to previous tab
+* `CTRL-w SHIFT-t`: move pane to tab
 
 ## add vertical line at 80 characters
 * `:set colorcolumn=80`
