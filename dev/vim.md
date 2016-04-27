@@ -149,6 +149,10 @@ or
 * `CTRL-w J`: move current window to the very bottom
 * `CTRL-w K`: move current window to the very top
 
+## exit
+* `:qa`: close all tabs/windows
+* `:wqa`: close and save all tabs/windows
+
 ## multiple files
 * `:sp` open new file in horizontal split
 * `:vsp` open new file in vertical split
