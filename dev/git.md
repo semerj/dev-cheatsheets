@@ -1,6 +1,46 @@
 # git
 
-## Getting Started
+# Zsh integration
+[Oh My Zsh git plugin](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh)
+
+```sh
+gst      status
+ga       add
+gcmsg    commit -m
+gd       diff
+gm       merge
+gf       fetch
+gfo      fetch origin
+gr       remote
+gra      remote add
+gb       branch
+gba      branch -a
+gco      checkout
+gcb      checkout -b
+glo      log --oneline --decorate
+gl       pull
+ggpull   pull origin $(git_current_branch)
+gp       push
+ggpush   push origin $(git_current_branch)
+gsta     stash
+```
+
+# Vim integration
+[Vim-fugitive plugin](https://github.com/tpope/vim-fugitive)
+
+* `:Git`: for running any arbitrary command
+* `:Gwrite` writes to both the work tree and index versions of a file, making it like git add when called from a work tree file and like `git checkout` when called from the index or a blob in history.
+* `:Gread` is a variant of `git checkout -- filename` that operates on the buffer rather than the filename. This means you can use `u` to undo it and you never get any warnings about the file changing outside Vim
+* `:Gstatus`: Bring up the output of git status with
+  * `-`: Press to `add`/`reset` a file's changes
+  * `p`: Press to `add`/`reset` `--patch`
+* `:Gcommit`: commit file(s)
+* `:Gmove`: does a `git mv`
+* `:Gremove`: does a `git rm`
+* `:Glog`: loads all previous revisions of a file into the quickfix list so you can iterate over them and watch the file evolve
+* `:Gbrowse`: to open the current file on GitHub, with optional line range (try it in visual mode!)
+
+# Getting Started
 
 ### Saving changes
 * `git commit -a -m <message>`: Commit a snapshot of all changes in the working directory. This only includes modifications to tracked files (those that have been added with `git add` at some point in their history).
@@ -233,29 +273,3 @@ $ git stash apply stash@{1}
 # remove stash from stack
 $ git stash drop stash@{0}
 ```
-
-# Zsh integration
-[Oh My Zsh git plugin](https://github.com/robbyrussell/oh-my-zsh/blob/master/plugins/git/git.plugin.zsh)
-
-* `gst`: `git status`
-* `ga`: `git add`
-* `gcmsg`: `git commit -m`
-* `gd`: `git diff`
-* `gr`: `git remote`
-* `gb`/`gba`: `git branch`/`git branch -a`
-* `gco`: `git checkout`
-
-# Vim integration
-[Vim-fugitive plugin](https://github.com/tpope/vim-fugitive)
-
-* `:Git`: for running any arbitrary command
-* `:Gwrite` writes to both the work tree and index versions of a file, making it like git add when called from a work tree file and like `git checkout` when called from the index or a blob in history.
-* `:Gread` is a variant of `git checkout -- filename` that operates on the buffer rather than the filename. This means you can use `u` to undo it and you never get any warnings about the file changing outside Vim
-* `:Gstatus`: Bring up the output of git status with
-  * `-`: Press to `add`/`reset` a file's changes
-  * `p`: Press to `add`/`reset` `--patch`
-* `:Gcommit`: commit file(s)
-* `:Gmove`: does a `git mv`
-* `:Gremove`: does a `git rm`
-* `:Glog`: loads all previous revisions of a file into the quickfix list so you can iterate over them and watch the file evolve
-* `:Gbrowse`: to open the current file on GitHub, with optional line range (try it in visual mode!)
