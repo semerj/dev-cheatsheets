@@ -232,7 +232,7 @@ manipulate csv files
 # basics
 $ csvlook file.csv | less -S
 $ csvcut -c column_c,column_a data.csv > new.csv
-$ csvgrep -c phone_number -r 555-555-\d{4}" data.csv > matching.csv
+$ csvgrep -c phone_number -r "555-555-\d{4}" data.csv > matching.csv
 
 # convert csv
 $ in2csv data.xls > data.csv
