@@ -1,58 +1,58 @@
 ## (g)awk
 search multiple files with same regex
-```bash
+```sh
 $ awk -F, '/regex/' csvfile.csv
 ```
 subset multiple values in first column
-```bash
+```sh
 $ awk -F, '$1 ~ /(regex1|regex2|regex3)/' csvfile.csv
 ```
 subset multiple values in ALL columns
-```bash
+```sh
 $ awk -F, '/(regex1|regex2|regex3)/' csvfile.csv
 ```
 filter by 1st column value and print all columns
-```bash
+```sh
 $ awk -F, '$1 == "regex" { print $0 }' csvfile.csv
 ```
 filter by 1st column value and print 2nd and 3rd columns only
-```bash
+```sh
 $ awk -F, '$1 == "regex" { print $2 "," $3 }' csvfile.csv
 ```
 filter by multiple values in first three columns and print all columns
-```bash
+```sh
 $ awk -F, '$1 == "regex" && $2 > 80 || $3 <= 20 { print $0 }' csvfile.csv
 ```
 prints total number of rows
-```bash
+```sh
 $ awk 'END { print FNR }' csvfile.csv
 # or
 $ cat csvfile.csv | wc -l
 ```
 print first row
-```bash
+```sh
 $ awk -F, 'NR==1 { print $0 }' csvfile.csv
 # or
 $ head -1 csvfile.csv
 ```
 print range of lines (e.g. 10-15)
-```bash
+```sh
 $ awk 'NR==10, NR==15' file
 ```
 print line immediately before a "/regex/" match (but not the line that matches itself)
-```bash
+```sh
 $ awk '/regex/ { print x }; { x=$0 }' csvfile.csv
 ```
 sample 1% of rows and include first row (header)
-```bash
+```sh
 $ awk 'BEGIN {srand()} !/^$/ { if (rand() <= .01 || FNR==1) print $0}' csvfile.csv
 ```
 remove beginning 4 characters from each line
-```bash
+```sh
 $ awk '{print substr($1,5); }' file
 ```
 create separate file for every value based on column
-```bash
+```sh
 # create file
 $ cat << EOF > myfile.csv
 heredoc> one,1
@@ -67,22 +67,22 @@ heredoc> EOF
 $ awk -F, '{num=$1; print > num"_file.csv"}' myfile.csv
 ```
 calculate average for second column
-```bash
+```sh
 $ awk -F, '{colSum+=$2} END {print "Average =", colSum/NR}' myfile.csv
 ```
 concatenate all csv files into large file and only keep the first header
-```bash
+```sh
 $ awk 'FNR==1 && NR!=1{ next; }{ print }' *.csv > bigfile.csv
 ```
 
 ## basename
-```bash
+```sh
 $ basename filename.ext .ext
 filename
 ```
 
 ## brace expansion
-```bash
+```sh
 $ echo mkdir -p foo/bar/{baz,qrs}
 mkdir -p foo/bar/baz foo/bar/qrs
 
@@ -96,7 +96,7 @@ $ echo x-{wing,b{ee,oo}p}
 x-wing x-beep x-boop
 ```
 brace expansion sequences
-```bash
+```sh
 $ echo wow{1..5}
 wow1 wow2 wow3 wow4 wow5
 
@@ -106,7 +106,7 @@ img0 img10 img20 img30 img40 img50
 
 ## cat
 write lines to file
-```bash
+```sh
 $ cat << EOF > myfile
 > line one
 > line two
@@ -114,35 +114,35 @@ $ cat << EOF > myfile
 > EOF
 ```
 combine multiple files
-```bash
+```sh
 $ cat file1 file2 > newfile
 ```
 append a file to the end of an existing file
-```bash
+```sh
 $ cat file >> existingfile
 ```
 any subsequent lines typed will go into the file until `CTRL-D` is typed
-```bash
+```sh
 $ cat > file
 ```
 any subsequent lines are appended to the file until `CTRL-D` is typed
-```bash
+```sh
 $ cat >> file
 ```
 alterative to piping data to command
-```bash
+```sh
 $ cat file | somecommand
 # or
 $ < file somecommand
 ```
 print column number of first row (transform columns into rows first)
-```bash
+```sh
 $ head -n 1 file | tr "," "\n" | cat -n
 ```
 
 ## convert
 convert `.jpg`'s into a `.gif`
-```bash
+```sh
 # resize images and provide a new path for output
 $ mogrify -path resized_images -resize 400x400 *.jpg
 
@@ -152,23 +152,23 @@ $ convert ./resized_images/*.jpg new.gif
 $ convert -rotate 270 new.gif rotated.gif
 ```
 download sequential image files and convert images to a single pdf
-```bash
+```sh
 $ curl "https://www.webpage.com/[1-50].jpg" -o "page_#1.jpg"
 $ convert *.jpg document.pdf
 ```
 
 ## cp
 copy directory and all its subdirectories recursively
-```bash
+```sh
 $ cp -r dir newdir
 ```
 copy all files with same extension to a path (only works with zsh?)
-```bash
+```sh
 $ cp **/*.jpeg ~/new/path
 ```
 
 ## cron
-```bash
+```sh
 * * * * * /path/to/command
 | | | | |
 | | | | ----- Day of week (0 - 7) (Sunday=0 or 7)
@@ -178,7 +178,7 @@ $ cp **/*.jpeg ~/new/path
 ------------- Minute (0 - 59)
 ```
 commands
-```bash
+```sh
 # input cron job
 $ crontab -e
 
@@ -189,7 +189,7 @@ $ crontab -l
 $ crontab -r
 ```
 examples
-```bash
+```sh
 # run every 5 minutes
 */5 * * * * /path/to/command
 
@@ -212,7 +212,7 @@ examples
 23 0-23/2 * * * /path/to/command
 ```
 special commands
-```bash
+```sh
 # run once a day, "0 0 * * *"
 @daily /path/to/command
 
@@ -220,88 +220,101 @@ special commands
 @hourly	/path/to/command
 ```
 redirect standard output and error of cron to file
-```bash
+```sh
 $ 59 23 * * * /home/john/bin/backup.sh > /home/john/logs/backup.log 2>&1
 
 # 2>&1 indicates that the standard error (2>) is redirected to the same file descriptor that is pointed by standard output (&1)
 ```
 
-## csvlook
-view csv file
-```bash
-$ csvlook "file.csv" | less -S
+## csvkit
+manipulate csv files
+```sh
+# basics
+$ csvlook file.csv | less -S
+$ csvcut -c column_c,column_a data.csv > new.csv
+$ csvgrep -c phone_number -r 555-555-\d{4}" data.csv > matching.csv
+
+# convert csv
+$ in2csv data.xls > data.csv
+$ in2csv data.json > data.csv
+$ csvjson data.csv > data.json
+
+# sql
+$ sql2csv --db postgresql:///database --query "select * from data" > extract.csv
+$ csvsql --query "select name from data where age > 30" data.csv > old_folks.csv
+$ csvsql --db postgresql:///database --insert data.csv
 ```
 
 ## curl
 download sequential files from api
-```bash
+```sh
 $ curl "http://api.example.com/v1/page/[01-99]" -o "page_#1.html"
 ```
 
 ## cut
 remove first 4 characters from each row
-```bash
+```sh
 $ cut -c1-4 file
 ```
 
 ## du
 view file size
-```bash
+```sh
 $ du -h file.csv
 ```
 
 ## echo
-```bash
+```sh
 $ echo -n "Hello" > hello-world
 $ echo " World" >> hello-world
 $ cat hello-world
 Hello World
 ```
 arithmetic
-```bash
+```sh
 $ echo $((4*5+1))
 21
 ```
 
 ## find
 find directories matching name
-```bash
+```sh
 $ find /some/dir -type d -name pattern
 ```
 find all files with same pattern
-```bash
+```sh
 $ find /some/dir -type f -print | grep 'pattern'
 ```
 find files matching name in current dir and subdir
-```bash
+```sh
 $ find . -name "pattern"
 ```
 find and copy all mp3's from all subdirectories to a new directory
-```bash
+```sh
 $ find . -name '*.mp3' -exec cp {} ~/Documents/mp3 \;
 ```
 find and remove all files ending with `.txt`
-```bash
+```sh
 $ find . -name "*.txt" -exec rm {} ";"
 ```
 find and remove all files less than 1 kilobyte
-```bash
+```sh
 $ find -type f -size -1k -exec rm {} +
 ```
 find all zip files and unzips in the directory they were found
-```bash
+```sh
 $ find . -name '*.zip' -execdir unzip '{}' ';'
 ```
 find files modified today (for date added use `-atime 0`)
-```bash
+```sh
 $ find . -type f -mtime 0
 ```
 find files size 0 bytes
-```bash
+```sh
 $ find . -type f -size 0
 ```
 find all python files modified between two dates and times
-```bash
+```sh
 $ gfind . -type f -name "*.py" -newermt "2014-10-01 00:00:00" ! -newermt "2014-10-10 23:59:59"
 ```
 find and move only files to directory
@@ -311,55 +324,55 @@ $ find . -maxdepth 1 -type f -exec mv {} destination_path \;
 
 ## fold
 break long lines into shorter lines with 30 characters
-```bash
+```sh
 $ cat file.txt | fold -sw 30
 ```
 
 ## grep
 ignore case
-```bash
+```sh
 $ grep -i pattern file
 ```
 match all files in directory
-```bash
+```sh
 $ grep -r pattern *
 ```
 count matching lines in multiple files
-```bash
+```sh
 $ grep -r -c pattern /directory
 ```
 lines that do not match pattern
-```bash
+```sh
 $ grep -v pattern file
 ```
 match either regex
-```bash
+```sh
 $ grep 'pattern1\|pattern2' file
 # or
 $ grep -E 'pattern1|pattern2' file
 ```
 match all regexs
-```bash
+```sh
 $ grep pattern1 file | grep pattern2
 # or
 $ grep -e pattern1 -e pattern2 file
 ```
 search multiple files and omit filename
-```bash
+```sh
 $ grep -h pattern file1.txt file2.txt
 # or
 $ grep -h pattern *.txt
 ```
 print 3 lines above and below each matched pattern
-```bash
+```sh
 $ grep -C 3 pattern file
 ```
 return word following pattern
-```bash
+```sh
 $ ggrep -Po '(?<=pattern\s)\w+' file
 ```
 piping search term to grep
-```bash
+```sh
 # non-GNU grep
 $ cat patterns.txt | grep -f /dev/stdin file
 # GNU grep
@@ -368,21 +381,21 @@ $ cat patterns.txt | grep -f - file
 
 ## head + tail
 display first and last 5 lines of file
-```bash
+```sh
 $ (head -5; tail -5) < file
 ```
 skip header row
-```bash
+```sh
 $ tail +2 file
 ```
 display first 3 lines in many files
-```bash
+```sh
 $ head -3 *.txt | cat
 ```
 
 ## join
 join 2 files by 2nd field on both, and return 1st field from file1.csv and 3rd field from file2.csv (must sort join field on both files first)
-```bash
+```sh
 $ join -t, -1 2 -2 2 -o 1.1,2.3 file1.csv file2.csv
 ```
 
@@ -418,128 +431,128 @@ $ launchctl load com.john.myscript.plist
 
 ## less
 view streaming data
-```bash
+```sh
 $ less +F streaming_file
 ```
 
 ## md5
 hash function
-```bash
+```sh
 $ echo -n "password" | md5
 ```
 
 ## mdfind
 spotlight equivalent: search inside files and metadata
-```bash
+```sh
 # restrict the search to a single directory
 $ mdfind -onlyin ~/Documents essay
 ```
 
 ## mv
 create nested directories
-```bash
+```sh
 $ mkdir -p foo/bar/{baz,qrs}
 ```
 remove/rename file basename
-```bash
+```sh
 $ for f in file*; do mv "$f" "newfile${f#file}"; done
 ```
 
 ## pandoc
 convert markdown to pdf
-```bash
+```sh
 $ pandoc --latex-engine=/usr/texbin/pdflatex input.md -o output.pdf
 ```
 convert markdown to latex
-```bash
+```sh
 $ pandoc -s readme.md -o readme.tex
 ```
 
 ## paste
 combine multiple files column-wise
-```bash
+```sh
 $ paste *.txt > agg-data.txt
 ```
 
 ## pbcopy and pbpaste
 copy list of files to clipboard
-```bash
+```sh
 $ ls ~ | pbcopy
 ```
 capture contents of a file
-```bash
+```sh
 $ pbcopy < file.txt
 ```
 
 ## python
 pretty-print json
-```bash
+```sh
 $ cat file.json | python -m json.tool
 ```
 start http server
-```bash
+```sh
 # python 2
 $ python -m SimpleHTTPServer &
 # python 3
 $ python -m http.server
 ```
 transpose all rows
-```bash
+```sh
 $ head csvfile.csv | python -c "import sys,csv; csv.writer(sys.stdout).writerows(zip(*csv.reader(sys.stdin)))"
 ```
 
 ## Rscript
 print min, median, mean, max, 1st/3rd quartiles
-```bash
+```sh
 $ csvcut -c 5 file.csv | { echo 'd<-scan()'; cat; echo; echo 'summary(d)'; } | R --slave
 ```
 
 ## rm
 remove entire directory recursively
-```bash
+```sh
 $ rm -rf file
 ```
 remove file interactively (prompt before removal)
-```bash
+```sh
 $ rm -i file
 ```
 
 ## sed
 return first line and matching pattern
-```bash
+```sh
 $ sed '1p;/pattern/!d' file
 ```
 
 substitute all string occurrences in a line
-```bash
+```sh
 $ sed s/pattern/replace_string/g file
 ```
 substitute all string occurrences in first 3 rows
-```bash
+```sh
 $ sed 1,3s/pattern/replace_string/g file
 ```
 substitue commas for spaces and save file in place
-```bash
+```sh
 $ sed -i '' 's/ /,/g' file
 ```
 remove all quotes from lines
-```bash
+```sh
 $ sed 's/"//g' file
 # or
 $ tr -d '"' file
 ```
 multiple substitutions from lines
-```bash
+```sh
 $ sed -e s/pattern1/replace_string1/ -e s/pattern2/replace_string2/ file
 ```
 remove beginning 4 characters from each row
-```bash
+```sh
 $ sed 's/^....//' file
 # or
 $ sed 's .\{4\}  '
 ```
 delete whitespace
-```bash
+```sh
 # leading whitespace (spaces, tabs)
 $ sed 's/^[ \t]*//' file
 
@@ -550,60 +563,60 @@ $ sed 's/[ \t]*$//' file
 $ sed 's/^[ \t]*//; s/[ \t]*$//' file
 ```
 remove the line containing the pattern
-```bash
+```sh
 $ sed '/pattern/d' file
 ```
 remove all empty lines
-```bash
+```sh
 $ sed '/^$/d' file
 
 $ sed '/./!d' file
 ```
 replace pattern in all files in folder
-```bash
+```sh
 $ for f in *.xml; do
     gsed -i 's/&#x1E;/?/g' $f
   done
 ```
 print specific lines of file (e.g. 10-15)
-```bash
+```sh
 $ sed -n 10,15p file
 ```
 pretty print first 5 lines of json file
-```bash
+```sh
 $ for i in {1..5}; do
     sed -n "$i"p file.json | python -m json.tool
   done
 ```
 remove first and last characters
-```bash
+```sh
 $ sed 's/^.\(.*\).$/\1/' file
 # or
 $ rev file | cut -c2- | rev | cut -c2-
 ```
 remove lines with fewer than 5 character
-```bash
+```sh
 $ gsed -r '/.{5,}/!d' file
 ```
 
 ## (g)shuf
 shuffle lines
-```bash
+```sh
 $ seq 1 5 | gshuf
 ```
 
 ## sort
 sort by first two columns
-```bash
+```sh
 $ sort -t, -k 1,2 csvfile.csv
 ```
 sort and return unique files
-```bash
+```sh
 $ sort -u file
 ```
 
 ## tar
-```bash
+```sh
 # extract all the files in mydir.tar into the mydir directory
 $ tar xvf mydir.tar
 
@@ -622,34 +635,34 @@ $ tar xvf mydir.tar.gz
 
 ## tee
 redirect stderr (2) into stdout (1), then pipe stdout into `tee`, which copies it to the terminal and to log file
-```bash
+```sh
 ./myscript.sh 2>&1 | tee log.txt
 ```
 
 ## tr
 translate braces into parenthesis
-```bash
+```sh
 $ tr '{}' '()' < file
 ```
 translate uppercase lowercase
-```bash
+```sh
 $ echo 'THIS IS ALL CAPS' | tr "[:upper:]" "[:lower:]"
 $ echo 'This is partial caps' | tr "[:upper:]" "[:lower:]"
 ```
 delete specific character
-```bash
+```sh
 $ echo "the geek stuff" | tr -d 't'
 ```
 strip out non-printable characters
-```bash
+```sh
 $ tr -cd "[:print:]" < file
 ```
 join all the lines in a file into a single line
-```bash
+```sh
 $ tr -s '\n' ' ' < file
 ```
 transpose 1st line
-```bash
+```sh
 $ head -1 csvfile.csv | tr ',' '\n'
 # or
 $ head -1 csvfile.csv | awk -vRS=',' 'NF'
@@ -657,7 +670,7 @@ $ head -1 csvfile.csv | awk -vRS=',' 'NF'
 $ head -1 csvfile.csv | sed 's/\(,\)/\1\n/g'
 ```
 remove empty lines
-```bash
+```sh
 $ tr -s '\n' < csvfile.csv
 # or
 $ awk '/./' csvfile.csv
@@ -665,13 +678,13 @@ $ awk '/./' csvfile.csv
 
 ## uniq
 count number of unique values (sort first)
-```bash
+```sh
 $ uniq -c
 ```
 
 ## wget
 download all files listed between <a href= from
-```bash
+```sh
 $ wget -q -O- ftp://66.97.146.93/ | \
   grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | \
   sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' | \
@@ -686,19 +699,19 @@ $ wget -q -O- ftp://66.97.146.93/ | \
 * `tar`: archived files, tarballs
 
 compress all files in current directory individually
-```bash
+```sh
 $ gzip *
 ```
 zip contents of entire directory into one zip file
-```bash
+```sh
 $ zip -r somedir.zip somedir
 ```
 zip all files matching pattern into one zip file
-```bash
+```sh
 $ find ./directory -name 'pattern' -exec zip zipfile.zip {} \;
 ```
 decompress file
-```bash
+```sh
 $ gunzip somedir
 # or
 $ gzip -d somedir
