@@ -399,6 +399,16 @@ join 2 files by 2nd field on both, and return 1st field from file1.csv and 3rd f
 $ join -t, -1 2 -2 2 -o 1.1,2.3 file1.csv file2.csv
 ```
 
+## jq
+filter JSON by value
+```sh
+$ jq '.[].key | select(.subkey == "hi")' file.json
+```
+count items in JSON object
+```sh
+$ jq '. | length' file.json
+```
+
 ## launchctl
 run script at startup in OSX
 ```
