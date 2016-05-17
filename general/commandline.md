@@ -408,6 +408,10 @@ count items in JSON object
 ```sh
 $ jq '. | length' file.json
 ```
+return JSON objects with id as index (from original JSON) and other filtered fields
+```sh
+$ jq -c '. | keys[] as $k | .[$k] | {id: $k, pmid: .MedlineCitation.PMID, aff: .MedlineCitation.Article.AuthorList[].AffiliationInfo[].Affiliation}' file.json
+```
 
 ## launchctl
 run script at startup in OSX
