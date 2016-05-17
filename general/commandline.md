@@ -412,6 +412,10 @@ return JSON objects with id as index (from original JSON) and other filtered fie
 ```sh
 $ jq -c '. | keys[] as $k | .[$k] | {id: $k, pmid: .MedlineCitation.PMID, aff: .MedlineCitation.Article.AuthorList[].AffiliationInfo[].Affiliation}' file.json
 ```
+concatenate JSON objects
+```sh
+$ jq -s "[.[0], .[1]]" file1.json file2.json
+```
 
 ## launchctl
 run script at startup in OSX
