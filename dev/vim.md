@@ -131,9 +131,9 @@ or
 * `\\` toggles visual selection comment lines
 
 ## tabs
-* `:tabedit {file}`; edit specified file in a new tab
-* `:tabfind {file}`: open a new tab with filename given, searching the 'path' to find it
-* `:tabclose`: close current tab
+* `:tabe {file}`; edit file in new tab
+* `:tabfind {file}`: search path to find and open file in new tab
+* `:args *.py | :tab all`: open multiple files in new tabs
 * `gt`: go to next tab
 * `gT`: go to previous tab
 * `CTRL-w SHIFT-t`: move pane to tab
