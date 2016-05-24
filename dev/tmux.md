@@ -22,6 +22,7 @@ prefix !               move pane to new window
 prefix {               move pane to previous position
 prefix }               move pane to next position
 :join-pane -s :1       place window 1 into pane on current window
+:join-pane -s 2 -t 1   move 2nd window as a pane to 1st window
 ```
 
 ### other
