@@ -1,11 +1,14 @@
 # Postgres
-setup
-```bash
-# install
+
+## Install
+```sh
 $ brew install postgresql
 $ which psql
 /usr/local/bin/psql
+```
 
+## Basics
+```sh
 # start
 $ pg_ctl -D /usr/local/var/postgres -l /usr/local/var/postgres/server.log start
 
@@ -30,13 +33,26 @@ $ dropdb 'dbname'
 # login as user to database
 $ psql dbname username
 ```
-commands
-```bash
-\?               # describe \ commands in psql
-\list            # list databases
-\dt              # list tables
-\dn              # list schemas
-\d+              # list all tables w/ descriptions
-\d+ tablename    # describe table
-\q               # quit
+
+## psql
+
+save output of query as tab separated file (for csv use `-F ,` instead of `-F $"\t"`)
+```sh
+$ psql -U user -d dbname -A -F $"\t" -c "select name, count(*) from foo;" -o foo.tsv
+```
+
+run query from file
+```sh
+$ psql -U user -d dbname -a -f query.sql
+```
+
+## psql commands
+```sh
+\?          # describe available commands
+\list       # list databases
+\dt         # list tables
+\dn         # list schemas
+\d+         # list all tables w/ descriptions
+\d+ table   # describe table
+\q          # quit
 ```
