@@ -33,3 +33,8 @@ Developer Cheat Sheets
 
 ### Other
 - [Geo](other/geo.md)
+
+### Data Science
+- [Probability](ds/probability-review.pdf)
+- [Statistics](ds/stats-review.pdf)
+- [Machine Learning](ds/ml-review.pdf)
