@@ -258,7 +258,7 @@ $ cut -c1-4 file
 ```
 
 ## diff
-using pipe substitution
+download and diff 2 files using process substitution
 ```sh
 $ diff <(curl http://somesite/file1) <(curl http://somesite/file2)
 ```
