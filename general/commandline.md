@@ -257,6 +257,12 @@ remove first 4 characters from each row
 $ cut -c1-4 file
 ```
 
+## diff
+using pipe substitution
+```sh
+$ diff <(curl http://somesite/file1) <(curl http://somesite/file2)
+```
+
 ## du
 view file size
 ```sh
