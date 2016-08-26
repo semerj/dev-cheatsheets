@@ -127,8 +127,8 @@ or
 * `CTRL-r`: redo changes which were undone (undo the undos)
 
 ## commenting
-* `\\\` toggles current line comment
-* `\\` toggles visual selection comment lines
+* `gcc` toggles current line comment
+* `gc` toggles visual selection comment lines
 
 ## tabs
 * `:tabe {file}`; edit file in new tab
