@@ -14,6 +14,7 @@ prefix 0-9             switch between windows
 prefix ,               rename window
 prefix q               show pane numbers
 prefix ?               list shortcuts
+:move-window -t 1      move current window to first position
 ```
 
 ### split-panes
