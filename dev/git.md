@@ -171,6 +171,23 @@ gsta     stash
     $ git fetch <remote> <branch>
     ```
 
+* `git merge`: Merge two branches. Resolve merge conflicts in branch rather than pulling commits into master.
+
+    ```sh
+    # undo merge before it's completed, e.g. there's a merge conflict you'd like to undo
+    $ git merge --abort
+
+    # undo merge after you've completed the merge
+    $ git reset --hard <commit>
+
+    # to fix merge conflicts:
+    $ git checkout master
+    $ git pull
+    $ git checkout branch
+    $ git merge master # resolve conflicts and create new commit
+    $ git push
+    ```
+
 * `git pull`: Fetch the specified remote’s copy of the current branch and immediately merge it into the local copy. `git pull --rebase` is used to ensure a linear history by preventing unnecessary merge commits.
 
     ```sh
