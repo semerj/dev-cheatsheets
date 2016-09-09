@@ -49,6 +49,8 @@
 * **other**
     * `di"`: delete inside double quotation marks
     * `d/c`: delete until next character `c` on any line
+    * `:g/pattern/d`: delete lines matching pattern
+    * `:g/pattern` then `:v//d`: delete lines not matching pattern
 
 ## search
 * `/pattern`: forward for pattern
@@ -69,6 +71,7 @@
     * `:5,12s/foo/bar/g`: replace `foo` with `bar` globally between lines 5 and 12
     * `:%s/\s*\w\+\s*$//`: delete last word of each line
     * `/\v<[A-Z]+>` & `:%s//\r&/g`: find all capital words and create a newline after match
+    * `:g/\w$/ s/$/,/`: find all lines that end with `\w` and append a comma
 
 * **silver searcher with [ag.vim](https://github.com/rking/ag.vim)**
     * `,a [options] {pattern} [{directory}]`: search code across files in directory
@@ -114,6 +117,7 @@ or
 ## yank
 * `yy`: yank (cut) the current line and put it in buffer
 * `Nyy`: yank (cut) N lines and put it in buffer
+* `:g/pattern/y A`: yank all matching lines in one buffer
 
 ## paste
 * `p`: paste at the current position the yanked line or lines from the buffer
