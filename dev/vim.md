@@ -134,6 +134,10 @@ or
 * `gcc` toggles current line comment
 * `gc` toggles visual selection comment lines
 
+## sorting
+* `:1,10sort`: sort lines 1 through 10
+* visual select + `:sort`: sort selected lines
+
 ## tabs
 * `:tabe {file}`; edit file in new tab
 * `:tabfind {file}`: search path to find and open file in new tab
