@@ -19,7 +19,7 @@ Developer Cheat Sheets
 
 ### Languages
 - [Julia](lang/julia.md)
-- [Python](lang/python.md) & [IPython](lang/ipython.md)
+- [Python](lang/python.md) & [IPython/Jupyter](lang/ipython.md)
 - [R](lang/r.md) & [R-HPC](lang/r-hpc.md)
 - [Scala](lang/scala.md)
 - [Spark](lang/scala-spark.md) & [PySpark](lang/pyspark.md)

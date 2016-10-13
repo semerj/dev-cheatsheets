@@ -1,10 +1,5 @@
 # IPython / Jupyter
 
-## Install
-```sh
-$ pip install jupyter
-```
-
 ## Extensions
 
 ### Autoreload
