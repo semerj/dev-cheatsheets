@@ -707,7 +707,13 @@ $ uniq -c
 ```
 
 ## wget
-download all files listed between <a href= from
+
+list file names in FTP directory
+```sh
+$ wget --no-remove-listing ftp://myftpserver/ftpdirectory/
+```
+
+download all files listed between `<a href=`
 ```sh
 $ wget -q -O- ftp://66.97.146.93/ | \
   grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | \
