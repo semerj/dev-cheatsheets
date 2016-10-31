@@ -546,7 +546,6 @@ return first line and matching pattern
 ```sh
 $ sed '1p;/pattern/!d' file
 ```
-
 substitute all string occurrences in a line
 ```sh
 $ sed s/pattern/replace_string/g file
@@ -622,6 +621,11 @@ remove lines with fewer than 5 character
 ```sh
 $ gsed -r '/.{5,}/!d' file
 ```
+match any character group inside brackets
+```sh
+$ sed -n "s/^\[\(.*\)\]$/\1/p"
+```
+
 
 ## (g)shuf
 shuffle lines
