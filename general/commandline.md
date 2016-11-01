@@ -498,6 +498,12 @@ combine multiple files column-wise
 $ paste *.txt > agg-data.txt
 ```
 
+## parallel
+run python command line script with different arguments from a text file in parallel
+```sh
+$ parallel --jobs 0 "python foo.py --arg={}" ::: $(cat args.txt)
+```
+
 ## pbcopy and pbpaste
 copy list of files to clipboard
 ```sh
