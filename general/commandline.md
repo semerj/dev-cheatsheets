@@ -632,7 +632,6 @@ match any character group inside brackets
 $ sed -n "s/^\[\(.*\)\]$/\1/p"
 ```
 
-
 ## (g)shuf
 shuffle lines
 ```sh
@@ -650,21 +649,14 @@ $ sort -u file
 ```
 
 ## tar
+create archive and compress with gzip
 ```sh
-# extract all the files in mydir.tar into the mydir directory
-$ tar xvf mydir.tar
-
-# create the archive and compress with gzip
-$ tar zcvf mydir.tar.gz mydir
-
-# create the archive and compress with bz2
-$ tar jcvf mydir.tar.bz2 mydir
-
-# create the archive and compress with xz
-$ tar jcvf mydir.tar.xz mydir
-
-# extract all the files in mydir.tar.xz into the mydir directory. note you do not have to tell tar it is in gzip format.
-$ tar xvf mydir.tar.gz
+# gzip
+$ tar zcvf mydir.tgz mydir
+```
+extract all files/directories (don't need to specify gzip format)
+```sh
+$ tar xvf mydir.tgz
 ```
 
 ## tee
