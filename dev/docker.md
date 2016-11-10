@@ -94,7 +94,7 @@ docker rm [CONTAINER NAME]
 ### remove image
 
 ```sh
-docker rmi [CONTAINER NAME]
+docker rmi -f [CONTAINER NAME]
 ```
 
 # Docker Compose
@@ -111,4 +111,14 @@ docker-compose --version
 
 ```sh
 docker-machine --version
+```
+
+## bash completion
+
+to activate bash completion (if using `brew`):
+```sh
+cd /usr/local/etc/bash_completion.d
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker.bash-completion
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker-machine.bash-completion
+ln -s /Applications/Docker.app/Contents/Resources/etc/docker-compose.bash-completion
 ```
