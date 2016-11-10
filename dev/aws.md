@@ -1,18 +1,23 @@
 # AWS
 
-show files in s3 bucket
-```bash
-$ aws --region us-west-1 s3 ls s3://<bucketname>
+## s3
+
+show files in bucket
+```sh
+$ aws s3 ls s3://BUCKET
 ```
-push local file to s3 bucket
-```bash
-$ aws --region us-west-1 s3 cp index.html s3://<bucketname>/index.html
+
+copy file
+```sh
+$ aws s3 cp file.txt s3://BUCKET/
 ```
-copy aws directory to local
-```bash
-$ aws --region us-west-1 s3 cp s3://<bucketname>/<directory>/ . --recursive
+
+copy s3 bucket to local
+```sh
+$ aws s3 cp s3://PATH/TO/BUCKET/ . --recursive
 ```
-create new aws bucket
-```bash
-$ aws --region us-west-1 s3 mb s3://<newbucketname>
+
+create new bucket
+```sh
+$ aws s3 mb s3://BUCKET
 ```
