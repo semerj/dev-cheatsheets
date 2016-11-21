@@ -37,6 +37,7 @@ docker run -d -p [LOCAL HOST PORT]:[CONTAINER PORT] [IMAGE] [PROGRAM]
 
 * `-t` : assigns a pseudo-tty or terminal inside the new container
 * `-i` : interactive connection by grabbing stdin of the container
+* `--user root` : run as root
 
 E.g. to run commands inside bash shell, replace `[PROGRAM]` with `/bin/bash`
 ```sh
