@@ -16,7 +16,7 @@ Developer Cheat Sheets
 - [AWS](dev/aws.md)
 
 ### Python
-- [Basics](python/python.md)
+- [Basics](python/basics.md)
 - [Scientific Python](python/scientific-python.md)
 - [IPython/Jupyter](python/ipython.md)
 - [Virtualenv](python/virtualenv.md)
