@@ -31,14 +31,14 @@ Developer Cheat Sheets
 
 ### Other Languages
 - [R](lang/r.md) & [R-HPC](lang/r-hpc.md)
-- [Scala](lang/scala.md)
-- [Spark](lang/scala-spark.md)
+- [Scala](lang/scala.md) & [Spark](lang/scala-spark.md)
 - [Julia](lang/julia.md)
 
 ### Database
 - [MySQL](db/mysql.md)
 - [MongoDB](db/mongodb.md)
 - [Postgres](db/postgres.md)
+- [Neo4j](db/neo4j.md)
 - [Hive](db/hive.md)
 
 ### Other
