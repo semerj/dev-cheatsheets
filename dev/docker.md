@@ -38,9 +38,9 @@ Daemon:
 * `-p` : bind container to specific port
 
 ```sh
-docker run -d -P IMAGE [CMD]
+$ docker run -d -P IMAGE [CMD]
 
-docker run -d -p LOCALHOST-PORT:CONTAINER-PORT IMAGE [CMD]
+$ docker run -d -p LOCALHOST-PORT:CONTAINER-PORT IMAGE [CMD]
 ```
 
 ### Example: `exec`
@@ -57,9 +57,9 @@ $ docker exec -t -i --user root CONTAINER /bin/bash
 
 Remove all (`-a`) containers and images based on numeric IDs (`-q`)
 ```sh
-docker rm $(docker ps -a -q)
+$ docker rm $(docker ps -a -q)
 
-docker rmi $(docker images -a -q)
+$ docker rmi $(docker images -a -q)
 ```
 
 # Docker Compose
@@ -80,9 +80,9 @@ up   [SERVICE...]    # create and start containers
 
 ### Example: `up`
 
-Run in detached-mode: run containers in the background
+Run containers in background (detached mode) and specify alternate `docker-compose.yml` file
 ```sh
-docker-compose up -d
+$ docker-compose -f alt-docker-compose.yml up -d
 ```
 
 # `bash` completion
