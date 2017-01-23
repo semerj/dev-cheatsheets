@@ -4,16 +4,7 @@ There are five [startup files](http://zsh.sourceforge.net/Intro/intro_3.html) th
 
 * `.zlogin` should contain commands that should be executed only in login shells.
 * `.zshrc` is sourced in interactive shells. It should contain commands to set up aliases, functions, options, key bindings, etc.
-* `.zprofile` is similar to `.zlogin`, except that it is sourced before `.zshrc`. 
-
-## commands
-* `CTRL-U`: delete entire line
-* `CTRL-W`: delete word in front of cursor
-* `ALT-D`: delete word after cursor
-* `CTRL-D`: exits the current shell
-* `CTRL-A`: goes to the beginning of the line
-* `CTRL-R`: search previously used commands
-* `CTRL-C`: kills the current process
+* `.zprofile` is similar to `.zlogin`, except that it is sourced before `.zshrc`.
 
 ## file permissions
 triad

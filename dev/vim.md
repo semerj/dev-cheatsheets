@@ -146,6 +146,10 @@ or
 * `gT`: go to previous tab
 * `CTRL-w SHIFT-t`: move pane to tab
 
+## run external commands
+* `:!ls`: shows file list in directory
+* `r:!ls`: copies the above command into vim window
+
 ## add vertical line at 80 characters
 * `:set colorcolumn=80`
 

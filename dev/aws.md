@@ -21,3 +21,8 @@ create new bucket
 ```sh
 $ aws s3 mb s3://BUCKET
 ```
+
+check the amount of disk space in bucket
+```sh
+aws s3 ls s3://<bucketname> --recursive  | grep -v -E "(Bucket: |Prefix: |LastWriteTime|^$|--)" | awk 'BEGIN {total=0}{total+=$3}END{print total/1024/1024" MB"}'
+```

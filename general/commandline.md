@@ -430,6 +430,11 @@ $ grep pattern1 file | grep pattern2
 $ grep -e pattern1 -e pattern2 file
 ```
 
+match numbers, return only matched groups
+```sh
+$ grep -oE '[0-9]{1,4}'
+```
+
 search multiple files and omit filename
 ```sh
 $ grep -h pattern file1.txt file2.txt
@@ -442,9 +447,16 @@ print 3 lines above and below each matched pattern
 $ grep -C 3 pattern file
 ```
 
-return word following pattern
+return word following pattern (`-P`: Perl-compatible regex; `-o`: return only matching part of line)
 ```sh
 $ ggrep -Po '(?<=pattern\s)\w+' file
+```
+
+return matching text between two patterns
+```sh
+$ ggrep -Po '(?<=http://www\.).+(?=\.com)' urls.txt
+# or
+$ gsed -nr 's/http:\/\/www\.(.+)\.com.*/\1/p' urls.txt
 ```
 
 piping search term to grep
@@ -934,6 +946,13 @@ $ wget -q -O- ftp://66.97.146.93/ | \
   grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | \
   sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' | \
   xargs -l wget
+```
+
+## `xargs`
+
+Download all images from named list by modifying URL
+```sh
+cat image_ids.txt | xargs -I % curl -v -L 'http://www.example.com/image/%' -o 'images/%.jpg'
 ```
 
 ## `zip`, `gzip`, `bzip2`, `xz`
