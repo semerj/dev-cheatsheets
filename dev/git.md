@@ -38,6 +38,12 @@ gr  / gra      remote / remote add
 :Gbrowse       open the current file on GitHub, with optional line range
 ```
 
+#### make `vim` default editor
+
+```sh
+$ git config --global core.editor "vim"
+```
+
 ## commands
 
 ### `git commit`
