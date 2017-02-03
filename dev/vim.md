@@ -150,6 +150,10 @@ or
 * `:!ls`: shows file list in directory
 * `r:!ls`: copies the above command into vim window
 
+## recording
+* `q <letter>`: records everything you type (`q` again ends recording)
+* `@ <letter>`: replays recording
+
 ## add vertical line at 80 characters
 * `:set colorcolumn=80`
 
