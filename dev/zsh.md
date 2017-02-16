@@ -43,6 +43,12 @@ $ cat file1 || cat file2 || cat file3
 ```
 
 ## history
+
+search history in vi mode:
+* `<Esc>` to enter command mode
+* `/` (backward search) or `?` (forward search)
+* `N` and `n` to find hits
+
 load history
 ```bash
 $ history | tail
@@ -51,6 +57,7 @@ $ fc -l
 # or
 $ tail $HISTFILE
 ```
+
 don't save command to history (space in front of command)
 ```bash
 $  secretcommand
