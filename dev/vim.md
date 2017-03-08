@@ -53,11 +53,8 @@
     * `:g/pattern` then `:v//d`: delete lines not matching pattern
 
 ## search
-* `/pattern`: forward for pattern
-* `?pattern`: backward for pattern
-* `n`: move to next occurrence of search pattern
-* `N`: move to previous occurrence of search pattern
-* `/\<word\>`: matches whole word (not pattern)
+* `/pattern` and `?pattern`: forward/backward for pattern
+* `n` and `N`: move to next/previous occurrence of search pattern
 * `*`: if already on word on screen, hit the `*` key to search for next occurrence of whole word
 * `pattern1\|pattern2\|pattern3`: find any of the patterns
 * after searching for word, use `:%s//new/g` to change all occurrences to 'new', or `:g/` to list all lines containing the word.
@@ -73,9 +70,9 @@
     * `/\v<[A-Z]+>` & `:%s//\r&/g`: find all capital words and create a newline after match
     * `:g/\w$/ s/$/,/`: find all lines that end with `\w` and append a comma
 
-* **silver searcher with [ag.vim](https://github.com/rking/ag.vim)**
-    * `,a [options] {pattern} [{directory}]`: search code across files in directory
-    * `,a flask -l -i -G py`: list matching filenames for `flask`, case insensitive, in filenames that contain `py`
+## search directory (silver searcher with [ag.vim](https://github.com/rking/ag.vim))
+* `,a [options] {pattern} [{directory}]`: search code across files in directory
+* `,a flask -l -i -G py`: list matching filenames for `flask`, case insensitive, in filenames that contain `py`
 
 ## jumping
 * `fc`: search forward on current line to character `c` (`dfc`: delete)
@@ -89,14 +86,21 @@
 
 * **preprend multiple lines**
     * `CTRL-v`, highlight lines, `Shift-I` to insert at beginning of block, press `Esc`
+
 * **visual select**
     * `>>`: indent the text right by shiftwidth
     * `<<`: indent the text left by shiftwidth
     * `y`: "yank" the text into the paste buffer
+
 * **visual insert**
     * `CTRL V` (select column), `Shift i` (type text to insert), `Esc`: insert text in multi-line selection
+
 * **paste output from stdout into vim**
     * type valid shell/python/R command in vim, visually select all lines, and enter `:!python`, or `:!bash`, or `:!R --vanilla`
+
+* **maximum awesome features**
+    * `vii`/`vai` visually select *in* or *around* the cursor's indent
+    * `Vp`/`vp` replaces visual selection with default register *without* yanking selected text (works with any visual selection)
 
 ## new line
 * `o`: start a new line below
@@ -118,6 +122,12 @@ or
 * `yy`: yank (cut) the current line and put it in buffer
 * `Nyy`: yank (cut) N lines and put it in buffer
 * `:g/pattern/y A`: yank all matching lines in one buffer
+* after searching for a pattern, copy only the text that matches, where `a` is any register (see [`CopyMatches`](http://vim.wikia.com/wiki/Copy_search_matches))
+
+    ```
+    :let @a = ''
+    :CopyMatches a
+    ```
 
 ## paste
 * `p`: paste at the current position the yanked line or lines from the buffer
@@ -153,6 +163,8 @@ or
 ## recording
 * `q <letter>`: records everything you type (`q` again ends recording)
 * `@ <letter>`: replays recording
+* `q a` + `<your edit>` + `ESC` + `j h q`, use with `@ a`: repeat command on multiple lines
+    * explanation: `q a` starts recording macro to register `a`, perform edit, exit insert mode, `j` moves down one line, `q` ends recording)
 
 ## add vertical line at 80 characters
 * `:set colorcolumn=80`
@@ -195,12 +207,9 @@ or
     * `,b` restricts `ctrlp.vim` to open buffers
 
 ## other maximum-awesome
-* `vii`/`vai` visually select *in* or *around* the cursor's indent
-* `Vp`/`vp` replaces visual selection with default register *without* yanking selected text (works with any visual selection)
 * `,[space]` strips trailing whitespace
 * `<C-]>` jump to definition using ctags
 * `,l` begins aligning lines on a string, usually used as `,l=` to align assignments
-* `<C-hjkl>` move between windows, shorthand for `<C-w> hjkl`
 
 ## Vundle
 install plugins by adding following to vimrc.bundle.local
@@ -211,3 +220,6 @@ and run
 ```
 :PluginInstall
 ```
+
+## sourcing
+* `:so filename`: source vim code in filename
