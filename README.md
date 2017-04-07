@@ -35,6 +35,7 @@ Developer Cheat Sheets
 - [Julia](lang/julia.md)
 
 ### Database
+- [Elasticsearch](db/elasticsearch.md)
 - [MySQL](db/mysql.md)
 - [MongoDB](db/mongodb.md)
 - [Postgres](db/postgres.md)
