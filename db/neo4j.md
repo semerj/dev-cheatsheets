@@ -1,7 +1,17 @@
-# neo4j
+# Neo4j
 
-# configs
+## REST API
 
-disable password:
+Query Neo4j REST API via curl POST request
 
-* uncomment `dbms.security.auth_enabled=false` in `/usr/local/Cellar/neo4j/<VERSION>/libexec/conf/neo4j.conf`
+```sh
+curl -H "Content-Type: application/json" \
+     -H "Accept: application/json" \
+     -d "@query.json" http://localhost:7474/db/data/transaction/commit
+```
+
+`query.json`
+
+```json
+{ "statements": [{ "statement": "MATCH (n) RETURN n LIMIT 10" }] }
+```
