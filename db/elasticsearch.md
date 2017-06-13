@@ -1,5 +1,14 @@
 # Elasticsearch
 
+## Basic
+
+Update an existing alias
+
+```sh
+$ curl -XPUT localhost:9200/<INDEX>/_alias/<ALIAS>
+```
+
+
 ## [Query DSL](https://www.elastic.co/guide/en/elasticsearch/reference/5.2/query-dsl.html)
 
 General query structure
