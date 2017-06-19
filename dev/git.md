@@ -337,3 +337,27 @@ Undo local changes in the staging area (can only work backwards from the current
     $ git remote -v
     $ git remote show origin
     ```
+
+### Preserve git history while copying directory from repo A to repo B
+
+* Get files ready for merge
+
+  ```sh
+  $ git clone <git@github.com:username/repo-A.git> && cd repo-A
+  $ git remote rm origin
+  $ git filter-branch --subdirectory-filter <repo-A/directory_1> -- --all
+  $ mkdir <directory_1>
+  $ mv * <directory_1>
+  $ git add .
+  $ git commit
+  ```
+
+* Merge files into new repository
+
+  ```sh
+  $ git clone <git@github.com:username/repo-B.git>
+  $ cd <repo-B>
+  $ git remote add repo-A-branch </directory_1>
+  $ git pull repo-A-branch master --allow-unrelated-histories
+  $ git remote rm repo-A-branch
+  ```
