@@ -202,6 +202,11 @@ or
     * `t`: open selected file in a new tab
     * `m`: delete file in menu
 
+* **Change working directory**
+    * `:pwd`: present working directory
+    * `:cd %:p:h`: change directory of currently open file (sets current directory for all windows in Vim)
+    * `:lcd %:p:h`: change directory only for current window
+
 * **full path fuzzy file, buffer finder with [ctrlp.vim](https://github.com/kien/ctrlp.vim)**
     * `,t` brings up a project file filter for easily opening specific files
     * `,b` restricts `ctrlp.vim` to open buffers
