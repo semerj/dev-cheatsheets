@@ -211,10 +211,19 @@ or
     * `,t` brings up a project file filter for easily opening specific files
     * `,b` restricts `ctrlp.vim` to open buffers
 
-## other maximum-awesome
-* `,[space]` strips trailing whitespace
-* `<C-]>` jump to definition using ctags
-* `,l` begins aligning lines on a string, usually used as `,l=` to align assignments
+## [ctags](http://ctags.sourceforge.net/ctags.html)
+
+Easily jump to code definitions
+
+1. Create a cron job to update tags daily
+
+  ```sh
+  0 12 * * * ctags --languages=python -R -o ~/.tags ~/path/to/code
+  ```
+
+2. add `--python-kinds=-i` to `~/.ctags` to ignore imports
+3. add `set tags=~/.tags;/` to `vimrc`
+4. use `CTRL-w ]` to jump to code definition (or :TagbarOpen to open viewer)
 
 ## Vundle
 install plugins by adding following to vimrc.bundle.local
@@ -228,3 +237,7 @@ and run
 
 ## sourcing
 * `:so filename`: source vim code in filename
+
+## other
+* `,[space]` strips trailing whitespace
+* `,l` begins aligning lines on a string, usually used as `,l=` to align assignments
