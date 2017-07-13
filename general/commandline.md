@@ -807,6 +807,11 @@ match any character group inside brackets
 $ sed -n "s/^\[\(.*\)\]$/\1/p"
 ```
 
+insert line at beginning of file
+```sh
+$ sed -i '1 i\line to insert' file.txt
+```
+
 ## `scp`
 
 copy files/folders
