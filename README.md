@@ -39,6 +39,7 @@ Developer Cheat Sheets
 - [MySQL](db/mysql.md)
 - [MongoDB](db/mongodb.md)
 - [Postgres](db/postgres.md)
+- [Redshift](db/redshift.md)
 - [Neo4j](db/neo4j.md)
 - [Hive](db/hive.md)
 
