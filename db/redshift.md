@@ -1,11 +1,11 @@
 # Redshift
 
-## VIEW
+## Metadata
 
-Create view
+Return table metadata
 ```sql
-CREATE OR REPLACE VIEW {viewname} AS
-SELECT ...
+SELECT * FROM pg_table_def
+WHERE tablename = {tablename}
 ```
 
 Show query that generated view
@@ -13,6 +13,14 @@ Show query that generated view
 SELECT definition FROM pg_views WHERE viewname = 'viewname'
 
 SELECT pg_get_viewdef('viewname', true)
+```
+
+### VIEW
+
+Create view
+```sql
+CREATE OR REPLACE VIEW {viewname} AS
+SELECT ...
 ```
 
 ## Conditional Expression
@@ -114,5 +122,5 @@ FROM (
             value
         )
     )
-WHERE row = 1
+WHERE row_number = 1
 ```
