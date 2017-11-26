@@ -38,11 +38,19 @@ gr  / gra      remote / remote add
 :Gbrowse       open the current file on GitHub, with optional line range
 ```
 
-#### make `vim` default editor
+#### configs
 
-```sh
-$ git config --global core.editor "vim"
-```
+* make `vim` default editor
+
+    ```sh
+    $ git config --global core.editor "vim"
+    ```
+
+* always rebase on `git pull`
+
+    ```sh
+    $ git config --global pull.rebase true
+    ```
 
 ## commands
 
@@ -229,12 +237,6 @@ Checking out a file affects the current state of your project.
 
     ```sh
     $ git pull --rebase <remote>
-    ```
-
-* config option to always rebase
-
-    ```sh
-    $ git config --global branch.autosetuprebase always
     ```
 
 ### `git revert`
