@@ -85,6 +85,11 @@ calculate average for second column
 $ awk -F, '{colSum+=$2} END {print "Average =", colSum/NR}' myfile.csv
 ```
 
+sum values in column
+```sh
+$ echo '1\n\2\n3' | awk '{ sum += $0 } END { print sum }'
+```
+
 concatenate all csv files into large file and only keep the first header
 ```sh
 $ awk 'FNR==1 && NR!=1{ next; }{ print }' *.csv > bigfile.csv
@@ -532,7 +537,9 @@ $ join -t, -1 2 -2 2 -o 1.1,2.3 file1.csv file2.csv
 
 filter JSON by value
 ```sh
-$ jq '.[].key | select(.subkey == "hi")' file.json
+$ jq '.[].key | select(.subkey == "foo" or .subkey == "bar")' file.json
+
+$ jq '.[].key | select(.subkey | contains("foo") or contains("bar"))' file.json
 ```
 
 count items in JSON object
