@@ -645,9 +645,9 @@ $ paste *.txt > agg-data.txt
 
 ## `parallel`
 
-run python command line script with different arguments from a text file in parallel
+run 4 parallel jobs while reading in command arguments form a tab separated text file
 ```sh
-$ parallel --jobs 0 "python foo.py --arg={}" ::: $(cat args.txt)
+$ parallel -a file.txt --colsep '\t' --jobs 4 my_command {1} {2}
 ```
 
 ## `pbcopy` / `pbpaste`
@@ -748,11 +748,13 @@ multiple substitutions from lines
 $ sed -e s/pattern1/replace_string1/ -e s/pattern2/replace_string2/ file
 ```
 
-remove beginning 4 characters from each row
+remove characters from each row
 ```sh
-$ sed 's/^....//' file
-# or
-$ sed 's .\{4\}  '
+# first 4 characters
+$ sed 's/.\{4\}//'
+
+# last 4 characters
+$ sed 's/.\{4\}$//'
 ```
 
 delete whitespace
@@ -958,6 +960,22 @@ $ wget -q -O- ftp://66.97.146.93/ | \
   grep -o '<a href=['"'"'"][^"'"'"']*['"'"'"]' | \
   sed -e 's/^<a href=["'"'"']//' -e 's/["'"'"']$//' | \
   xargs -l wget
+```
+
+## `while`
+
+read tab separated urls and filenames from a text file and download them
+```sh
+while read URL FILENAME; do
+  wget -O "$FILENAME" "$URL"
+done < file.txt
+```
+
+## `wkhtmltopdf`
+
+convert html to pdf
+```sh
+wkhtmltopdf http://www.google.com google.pdf
 ```
 
 ## `xargs`
